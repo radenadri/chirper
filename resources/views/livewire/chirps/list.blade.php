@@ -122,22 +122,20 @@ on([
     </div>
 </section>
 
-@push('scripts')
-    <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('loadMoreChirps', () => ({
-                shown: false,
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('loadMoreChirps', () => ({
+            shown: false,
 
-                load() {
-                    this.shown = true;
+            load() {
+                this.shown = true;
 
-                    setTimeout(() => {
-                        this.$dispatch('load-more-chirps');
+                setTimeout(() => {
+                    this.$dispatch('load-more-chirps');
 
-                        this.shown = false;
-                    }, 2000);
-                },
-            }))
-        })
-    </script>
-@endpush
+                    this.shown = false;
+                }, 2000);
+            },
+        }))
+    })
+</script>

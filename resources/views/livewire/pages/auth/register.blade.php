@@ -34,7 +34,7 @@ $register = function () {
 
     Auth::login($user);
 
-    $this->redirect(route('chirps', absolute: false), navigate: true);
+    $this->redirect(route('chirps', absolute: false));
 };
 
 ?>
