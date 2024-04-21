@@ -1,16 +1,11 @@
 <?php
 
 use App\Models\Chirp;
-use function Livewire\Volt\{mount, on, placeholder, state};
-
-placeholder('<div class="mt-4">Loading...</div>');
-
-mount(function () {
-    // dd($this->lastChirp);
-});
+use function Livewire\Volt\{on, state};
 
 $getAllChirps = function () {
     $lastChirpId = $this->lastChirp ? $this->lastChirp->id : null;
+
     $chirps = Chirp::query()
         ->with('user')
         ->latest()
@@ -20,30 +15,32 @@ $getAllChirps = function () {
         ->take(6)
         ->get();
 
-    $this->chirps = $this->chirps ? $this->chirps->merge($chirps) : $chirps;
     $this->lastChirp = $chirps->last();
+    $this->chirps = $this->chirps ? $this->chirps->merge($chirps) : $chirps;
 
     return $chirps;
 };
 
+$created = function (array $chirp) {
+    $newChirp = Chirp::make($chirp)->load('user')->setConnection(config('database.default'));
+
+    $this->chirps = $this->chirps->prepend($newChirp);
+};
+
 $edit = function (Chirp $chirp) {
     $this->editing = $chirp;
-
-    $this->getAllChirps();
 };
 
 $delete = function (Chirp $chirp) {
     $this->authorize('delete', $chirp);
 
-    $chirp->delete();
+    $this->chirps = $this->chirps->except($chirp->id);
 
-    $this->getAllChirps();
+    $chirp->delete();
 };
 
 $disableEditing = function () {
     $this->editing = null;
-
-    return $this->getAllChirps();
 };
 
 state([
@@ -54,7 +51,7 @@ state([
 
 on([
     'load-more-chirps' => $getAllChirps,
-    'chirp-created' => $getAllChirps,
+    'chirp-created' => $created,
     'chirp-updated' => $disableEditing,
     'chirp-edit-canceled' => $disableEditing,
 ]);
@@ -133,8 +130,6 @@ on([
 
                 load() {
                     this.shown = true;
-
-
 
                     setTimeout(() => {
                         this.$dispatch('load-more-chirps');

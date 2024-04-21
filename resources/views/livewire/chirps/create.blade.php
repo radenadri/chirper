@@ -11,11 +11,11 @@ rules([
 $store = function () {
     $validated = $this->validate();
 
-    auth()->user()->chirps()->create($validated);
+    $chirp = auth()->user()->chirps()->create($validated);
 
     $this->reset('message');
 
-    $this->dispatch('chirp-created');
+    $this->dispatch('chirp-created', $chirp);
 };
 
 ?>

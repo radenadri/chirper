@@ -12,12 +12,16 @@ class Chirp extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
+        'user_id',
         'message',
+        'created_at',
+        'updated_at'
     ];
 
-    // protected $dispatchesEvents = [
-    //     'created' => ChirpCreated::class,
-    // ];
+    protected $dispatchesEvents = [
+        'created' => ChirpCreated::class,
+    ];
 
     public function user(): BelongsTo
     {
