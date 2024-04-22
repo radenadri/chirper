@@ -19,6 +19,7 @@ This chirper are built with Volt and Alpine.js.
 - [ ] Adding avatar to user
 - [ ] Adding likes to chirp
 - [ ] Adding comments to chirp
+- [ ] Searching chirp
 - [ ] Adding notifications to chirp when user are interacting with chirp
 - [ ] User dropdown that showing profile and logout
 - [ ] Profile page to change user info
