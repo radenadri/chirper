@@ -7,6 +7,8 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.0",
+        "laravel/octane": "^2.4",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0"
