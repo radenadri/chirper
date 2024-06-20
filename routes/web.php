@@ -17,4 +17,6 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+Route::get('/exception-test', fn () => throw new Exception('Test exception'));
+
 require __DIR__ . '/auth.php';
