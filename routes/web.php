@@ -5,6 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('welcome');
 
+Route::get('/test', function () {
+    $debugThis = 'debug';
+
+    $debugThis .= ' test123';
+
+    return $debugThis;
+});
+
 Route::get('chirps', [ChirpController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('chirps');
