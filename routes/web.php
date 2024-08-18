@@ -10,6 +10,8 @@ Route::get('/test', function () {
 
     $debugThis .= ' test123';
 
+    $debugThis .= 'no more';
+
     return $debugThis;
 });
 
