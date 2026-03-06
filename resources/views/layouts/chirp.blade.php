@@ -23,11 +23,11 @@
                 <x-application-logo class="w-20 h-20 fill-current text-neutral-500" />
             </a>
             <div>
-                <x-nav-link :href="route('welcome')" wire:navigate>
-                    {{ __('Homepage') }}
+                <x-nav-link :href="route('chirps')" wire:navigate>
+                    {{ __('Chirps') }}
                 </x-nav-link>
-                <x-nav-link href="#" wire:navigate>
-                    {{ __('About') }}
+                <x-nav-link :href="route('profile')" wire:navigate>
+                    {{ __('Profile') }}
                 </x-nav-link>
             </div>
         </div>

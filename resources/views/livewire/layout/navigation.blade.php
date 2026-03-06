@@ -35,7 +35,8 @@ $logout = function (Logout $logout) {
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-neutral-500 bg-neutral-50 hover:text-neutral-700 focus:outline-none transition ease-in-out duration-150">
+                            class="inline-flex items-center gap-2 px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-neutral-500 bg-neutral-50 hover:text-neutral-700 focus:outline-none transition ease-in-out duration-150">
+                            <x-avatar :user="auth()->user()" size="sm" />
                             <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
                                 x-on:profile-updated.window="name = $event.detail.name"></div>
 
@@ -91,10 +92,13 @@ $logout = function (Logout $logout) {
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-neutral-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-neutral-800" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
-                    x-on:profile-updated.window="name = $event.detail.name"></div>
-                <div class="font-medium text-sm text-neutral-500">{{ auth()->user()->email }}</div>
+            <div class="px-4 flex items-center gap-3">
+                <x-avatar :user="auth()->user()" size="md" />
+                <div>
+                    <div class="font-medium text-base text-neutral-800" x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name"
+                        x-on:profile-updated.window="name = $event.detail.name"></div>
+                    <div class="font-medium text-sm text-neutral-500">{{ auth()->user()->email }}</div>
+                </div>
             </div>
 
             <div class="mt-3 space-y-1">

@@ -64,14 +64,7 @@ on([
     <div class="mt-6 divide-y rounded-lg shadow-sm bg-neutral-50">
         @forelse ($chirps as $chirp)
             <div class="flex p-6 space-x-4" wire:key="{{ $chirp->id }}">
-                {{-- Default Avatar --}}
-                <div class="relative w-10 h-10 overflow-hidden rounded-full bg-neutral-100 dark:bg-neutral-600">
-                    <svg class="absolute w-12 h-12 text-neutral-400 -left-1" fill="currentColor" viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </div>
+                <x-avatar :user="$chirp->user" size="md" />
 
                 <div class="flex-1">
                     <div class="flex items-center justify-between">

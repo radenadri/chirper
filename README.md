@@ -16,7 +16,7 @@ This chirper are built with Volt and Alpine.js.
 - [x] Creating new layouts for chirps
 - [x] Infinite scrolling for listing chirps
 - [x] Max character input for chirp textarea
-- [ ] Adding avatar to user
+- [x] Adding avatar to user
 - [ ] Adding likes to chirp
 - [ ] Adding comments to chirp
 - [ ] Searching chirp
